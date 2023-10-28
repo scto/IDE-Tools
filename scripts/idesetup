@@ -1,4 +1,5 @@
-#!/data/data/com.itsaky.androidide/files/usr/bin/bash
+#!/usr/bin/bash
+##!/data/data/com.itsaky.androidide/files/usr/bin/bash
 
 set -eu
 
@@ -32,8 +33,8 @@ print_success() {
 }
 
 print_help() {
-    echo "AndroidIDE build tools installer"
-    echo "This script helps you easily install build tools in AndroidIDE."
+    echo "IDE build tools installer"
+    echo "This script helps you easily install build tools in IDE."
     echo ""
     echo "Usage:"
     echo "${0} -s 34.0.4 -c -j 17"
@@ -43,7 +44,7 @@ print_help() {
     echo "-i   Set the installation directory. Defaults to \$HOME."
     echo "-s   Android SDK version to download."
     echo "-c   Download Android SDK with command line tools."
-    echo "-m   Manifest file URL. Defaults to 'manifest.json' in 'androidide-tools' GitHub repository."
+    echo "-m   Manifest file URL. Defaults to 'manifest.json' in 'IDE-Tools' GitHub repository."
     echo "-j   OpenJDK version to install. Values can be '17' or '21'"
     echo ""
     echo "For testing purposes:"
@@ -142,7 +143,7 @@ arch=$(uname -m)
 install_dir=$HOME
 sdkver_org=34.0.4
 with_cmdline=false
-manifest="https://raw.githubusercontent.com/AndroidIDEOfficial/androidide-tools/main/manifest.json"
+manifest="https://raw.githubusercontent.com/scto/IDE-Tools/main/manifest.json"
 pkgm="pkg"
 pkg_curl="libcurl"
 jdk_version="17"
@@ -191,7 +192,7 @@ if [ "$jdk_version" != "17" ] && [ "$jdk_version" != "21" ]; then
 fi
 
 if [ "$jdk_version" == "21" ]; then
-    print_warn "OpenJDK 21 support in AndroidIDE is experimental. It may or may not work properly."
+    print_warn "OpenJDK 21 support in IDE is experimental. It may or may not work properly."
     print_warn "Also, OpenJDK 21 is only supported in Gradle v8.4 and newer. Older versions of Gradle will NOT work!"
     if ! is_yes "Do you still want to install OpenJDK 21?"; then
         jdk_version="17"
