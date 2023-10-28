@@ -214,6 +214,11 @@ if is_yes "Do you want to install openssh?"; then
     pkgs+=" openssh"
 fi
 
+# Ask the user whether 'gradle' should be installed as well
+if is_yes "Do you want to install gradle?"; then
+    pkgs+=" gradle"
+fi
+
 echo "------------------------------------------"
 echo "Installation directory    : ${install_dir}"
 echo "SDK version               : ${sdkver_org}"
